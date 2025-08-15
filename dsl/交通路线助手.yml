@@ -1,0 +1,128 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: agent-chat
+  name: test-map
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: junjiem/mcp_sse:0.2.1@53cc613667fcf91dd7208dd5f6d2c8df3c7ff0af8b79e8f3c0a430f1b39bda4c
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai_api_compatible:0.0.16@d41b09aca46cdd3876f70b4c91d464c4588fc0bdc844ced6ee426283ead6ce8e
+kind: app
+model_config:
+  agent_mode:
+    enabled: true
+    max_iteration: 10
+    prompt: null
+    strategy: react
+    tools:
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: junjiem/mcp_sse/mcp_sse
+      provider_name: junjiem/mcp_sse/mcp_sse
+      provider_type: builtin
+      tool_label: 获取 MCP 工具列表
+      tool_name: mcp_sse_list_tools
+      tool_parameters:
+        prompts_as_tools: ''
+        resources_as_tools: ''
+        servers_config: ''
+    - enabled: true
+      isDeleted: false
+      notAuthor: false
+      provider_id: junjiem/mcp_sse/mcp_sse
+      provider_name: junjiem/mcp_sse/mcp_sse
+      provider_type: builtin
+      tool_label: 调用 MCP 工具
+      tool_name: mcp_sse_call_tool
+      tool_parameters:
+        arguments: ''
+        prompts_as_tools: ''
+        resources_as_tools: ''
+        servers_config: ''
+        tool_name: ''
+  annotation_reply:
+    enabled: false
+  chat_prompt_config: {}
+  completion_prompt_config: {}
+  dataset_configs:
+    datasets:
+      datasets: []
+    reranking_enable: false
+    retrieval_model: multiple
+    top_k: 4
+  dataset_query_variable: ''
+  external_data_tools: []
+  file_upload:
+    allowed_file_extensions:
+    - .JPG
+    - .JPEG
+    - .PNG
+    - .GIF
+    - .WEBP
+    - .SVG
+    - .MP4
+    - .MOV
+    - .MPEG
+    - .WEBM
+    allowed_file_types: []
+    allowed_file_upload_methods:
+    - remote_url
+    - local_file
+    enabled: false
+    image:
+      detail: high
+      enabled: false
+      number_limits: 3
+      transfer_methods:
+      - remote_url
+      - local_file
+    number_limits: 3
+  model:
+    completion_params:
+      stop: []
+      temperature: 0.6
+      top_p: 0.9
+    mode: chat
+    name: /home/xyt/Qwen2_5-32B-Instruct
+    provider: langgenius/openai_api_compatible/openai_api_compatible
+  more_like_this:
+    enabled: false
+  opening_statement: ''
+  pre_prompt: '你是一个智能助手，请根据用户输入的文本完成任务。
+
+
+    【注意】：
+
+    1. 回答问题前判断是否需要调用高德MCP工具来帮助完成任务。
+
+    2. 需要调用工具，先获取MCP工具列表，再调用合适的MCP工具。
+
+    3. 如果高德地图MCP没有查到，说明无法查询。
+
+    '
+  prompt_type: simple
+  retriever_resource:
+    enabled: true
+  sensitive_word_avoidance:
+    configs: []
+    enabled: false
+    type: ''
+  speech_to_text:
+    enabled: false
+  suggested_questions: []
+  suggested_questions_after_answer:
+    enabled: false
+  text_to_speech:
+    enabled: false
+    language: ''
+    voice: ''
+  user_input_form: []
+version: 0.3.1
