@@ -1,0 +1,615 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: form
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: package
+  value:
+    plugin_unique_identifier: langgenius/openai:0.0.26@c1e643ac6a7732f6333a783320b4d3026fa5e31d8e7026375b98d44418d33f26
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: template-transform
+      id: 1755317047817-source-1755317089229-target
+      source: '1755317047817'
+      sourceHandle: source
+      target: '1755317089229'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: agent
+      id: 1755317089229-source-1755351420802-target
+      source: '1755317089229'
+      sourceHandle: source
+      target: '1755351420802'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: question-classifier
+      id: 1755351420802-source-1755400767306-target
+      source: '1755351420802'
+      sourceHandle: source
+      target: '1755400767306'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: template-transform
+      id: 1755400767306-1-1755401101684-target
+      source: '1755400767306'
+      sourceHandle: '1'
+      target: '1755401101684'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1755401101684-source-1755401243285-target
+      source: '1755401101684'
+      sourceHandle: source
+      target: '1755401243285'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: template-transform
+      id: 1755400767306-2-1755401257759-target
+      source: '1755400767306'
+      sourceHandle: '2'
+      target: '1755401257759'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1755401257759-source-1755401243285-target
+      source: '1755401257759'
+      sourceHandle: source
+      target: '1755401243285'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: answer
+      id: 1755401243285-source-answer-target
+      source: '1755401243285'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: code
+      id: 1755400767306-1755401454015-1755401469988-target
+      source: '1755400767306'
+      sourceHandle: '1755401454015'
+      target: '1755401469988'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1755401469988-source-1755401243285-target
+      source: '1755401469988'
+      sourceHandle: source
+      target: '1755401243285'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: template-transform
+      id: 1755400767306-1755420753149-1755420800957-target
+      source: '1755400767306'
+      sourceHandle: '1755420753149'
+      target: '1755420800957'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1755420800957-source-1755401243285-target
+      source: '1755420800957'
+      sourceHandle: source
+      target: '1755401243285'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 54
+      id: '1755317047817'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1755351420802.text#}}
+
+          {{#1755401243285.output#}}'
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: answer
+      position:
+        x: 2242.9791333556923
+        y: 366.1065407613676
+      positionAbsolute:
+        x: 2242.9791333556923
+        y: 366.1065407613676
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "<div class=\"flex flex-wrap gap-2 mt-10\">\n  <button data-size=\"\
+          small\" data-variant=\"tertiary\">修改</button>\n  <button data-size=\"small\"\
+          \ data-variant=\"warning\" data-message=\" cancel\">撤销</button>\n</div>"
+        title: 底部工具栏
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1755317089229'
+      position:
+        x: 383.0108870569836
+        y: 282
+      positionAbsolute:
+        x: 383.0108870569836
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: '你将协助用户执行任务， 你有以下能力
+
+              1. 重新触发消息（reprocess）
+
+              2. 查询bc 消息的状态
+
+
+              重新触发消息必须经过用户同意'
+          model:
+            type: constant
+            value:
+              completion_params:
+                max_tokens: 11201
+                temperature: 0
+              mode: chat
+              model: gpt-4.1-mini
+              model_type: llm
+              provider: langgenius/openai/openai
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#sys.query#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: 根据domainid 和 bcnum 进行重试消息（reprocess）操作
+              parameters:
+                bcNum:
+                  auto: 1
+                  value: null
+                domainId:
+                  auto: 1
+                  value: null
+              provider_name: a8005cdb-c6d3-43e9-8e3a-52297d9d41ce
+              provider_show_name: reprocess-tool
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 用户编号
+                  ja_JP: 用户编号
+                  pt_BR: 用户编号
+                  zh_Hans: 用户编号
+                label:
+                  en_US: domainId
+                  ja_JP: domainId
+                  pt_BR: domainId
+                  zh_Hans: domainId
+                llm_description: 用户编号
+                max: null
+                min: null
+                name: domainId
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 查询bc number 编号
+                  ja_JP: 查询bc number 编号
+                  pt_BR: 查询bc number 编号
+                  zh_Hans: 查询bc number 编号
+                label:
+                  en_US: bcNum
+                  ja_JP: bcNum
+                  pt_BR: bcNum
+                  zh_Hans: bcNum
+                llm_description: 查询bc number 编号
+                max: null
+                min: null
+                name: bcNum
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_description: 根据domainid 和 bcnum 进行重试消息（reprocess）操作
+              tool_label: reprocess-tool
+              tool_name: reprocess_by_domainid_bcnum
+              type: workflow
+            - enabled: true
+              extra:
+                description: search bc msg status by id
+              parameters:
+                msgid:
+                  auto: 1
+                  value: null
+              provider_name: e8078c65-3103-44af-afd5-ed6efd8a0b7a
+              provider_show_name: search-bc-status
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 消息id
+                  ja_JP: 消息id
+                  pt_BR: 消息id
+                  zh_Hans: 消息id
+                label:
+                  en_US: msgid
+                  ja_JP: msgid
+                  pt_BR: msgid
+                  zh_Hans: msgid
+                llm_description: 消息id
+                max: null
+                min: null
+                name: msgid
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_description: search bc msg status by id
+              tool_label: search-bc-status
+              tool_name: search_bc_msg_status
+              type: workflow
+        agent_strategy_label: FunctionCalling
+        agent_strategy_name: function_calling
+        agent_strategy_provider_name: langgenius/agent/agent
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          window:
+            enabled: true
+            size: 50
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        output_schema: null
+        plugin_unique_identifier: langgenius/agent:0.0.23@baba5fd2631a535dcd85f070f8be1bdcfb02c46e1a0a830ad00d7bc846063de4
+        selected: false
+        title: Agent
+        tool_node_version: '2'
+        type: agent
+      height: 198
+      id: '1755351420802'
+      position:
+        x: 753
+        y: 282
+      positionAbsolute:
+        x: 753
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: '查询功能列表、
+
+            问候、
+
+            其他需要帮忙的吗？
+
+            '
+        - id: '2'
+          name: '询问是否操作、
+
+            同意操作、需要操作'
+        - id: '1755420753149'
+          name: 抱歉、未能找到
+        - id: '1755401454015'
+          name: '请求提供信息
+
+            或其他无关'
+        desc: ''
+        instruction: 根据
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4.1
+          provider: langgenius/openai/openai
+        query_variable_selector:
+        - '1755351420802'
+        - text
+        selected: false
+        title: 问题分类器 2
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 264
+      id: '1755400767306'
+      position:
+        x: 1193.435482279344
+        y: 282
+      positionAbsolute:
+        x: 1193.435482279344
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "<div class=\"flex flex-wrap gap-2\">\n  <button data-size=\"small\"\
+          \ data-variant=\"tertiary\" data-message=\" 重试触发消息\">重新触发消息</button>\n \
+          \ <button data-size=\"small\" data-variant=\"warning\" data-message=\" 查询消息状态\"\
+          >查询消息状态</button>\n</div>"
+        title: 功能列表模板
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1755401101684'
+      position:
+        x: 1580.4186618417014
+        y: 366.1065407613676
+      positionAbsolute:
+        x: 1580.4186618417014
+        y: 366.1065407613676
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        output_type: string
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1755401101684'
+          - output
+        - - '1755401257759'
+          - output
+        - - '1755401469988'
+          - result
+        - - '1755420800957'
+          - output
+      height: 189
+      id: '1755401243285'
+      position:
+        x: 1884.4186618417014
+        y: 366.1065407613676
+      positionAbsolute:
+        x: 1884.4186618417014
+        y: 366.1065407613676
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "<div class=\"flex flex-wrap gap-2\">\n  <button data-size=\"small\"\
+          \ data-variant=\"tertiary\" data-message=\" 确认\">确认</button>\n  <button\
+          \ data-size=\"small\" data-variant=\"warning\" data-message=\" 取消\">取消</button>\n\
+          </div>"
+        title: action按钮
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1755401257759'
+      position:
+        x: 1580.4186618417014
+        y: 449.1834707262299
+      positionAbsolute:
+        x: 1580.4186618417014
+        y: 449.1834707262299
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main() -> dict:\n    return {\n        \"result\": \"\",\n  \
+          \  }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 空
+        type: code
+        variables: []
+      height: 54
+      id: '1755401469988'
+      position:
+        x: 1580.4186618417014
+        y: 619.3629043328565
+      positionAbsolute:
+        x: 1580.4186618417014
+        y: 619.3629043328565
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "<div class=\"flex flex-wrap gap-2\">\n  <button data-size=\"small\"\
+          \ data-variant=\"tertiary\" data-message=\" 继续尝试步骤\">继续尝试</button>\n</div>"
+        title: 重试
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1755420800957'
+      position:
+        x: 1580.4186618417014
+        y: 533.7476437003778
+      positionAbsolute:
+        x: 1580.4186618417014
+        y: 533.7476437003778
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -597.9825633429443
+      y: -59.329457337786835
+      zoom: 0.9069773737493435
